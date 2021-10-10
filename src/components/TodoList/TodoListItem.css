@@ -1,5 +1,11 @@
 .listitem-container {
   background: #24273D;
+  transition: 0.2s ease-in-out;
+}
+
+.listitem-container:hover {
+  background: #343859;
+  transition: 0.2s ease-in-out;
 }
 
 .listitem-container:not(:last-child) {
@@ -11,9 +17,9 @@
   transition: 0.3s ease-in-out;
 }
 
-.listitem-container:first-child {
+/* .listitem-container:first-child {
   border-radius: 10px 10px 0 0;
-}
+} */
 
 .listitem-container:last-child {
   border-radius: 0 0 10px 10px;

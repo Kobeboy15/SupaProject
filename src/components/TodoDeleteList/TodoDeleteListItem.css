@@ -1,10 +1,16 @@
 .listitem-container {
   background: #24273D;
+  transition: 0.2s ease-in-out;
 }
 
-.listitem-container:first-child {
-  border-radius: 10px 10px 0 0;
+.listitem-container:hover {
+  background: #343859;
+  transition: 0.2s ease-in-out;
 }
+
+/* .listitem-container:first-child {
+  border-radius: 10px 10px 0 0;
+} */
 
 .listitem-container .material-icons {
   color: #A6A9D1;
