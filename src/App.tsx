@@ -6,9 +6,8 @@ import {
   Route,
 } from "react-router-dom";
 
-import TodoListPage from './components/TodoListPage';
-import TodoNewPage from './components/TodoNewPage';
-import TodoTrashPage from './components/TodoTrashPage';
+import TodoListPage from './pages/TodoListPage';
+import TodoTrashPage from './pages/TodoTrashPage';
 
 function App() {
   return (
@@ -17,9 +16,6 @@ function App() {
       <Switch>
         <Route exact path="/">
           <TodoListPage />
-        </Route>
-        <Route exact path="/new">
-          <TodoNewPage />
         </Route>
         <Route exact path="/trash">
           <TodoTrashPage />

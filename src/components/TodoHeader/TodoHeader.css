@@ -1,0 +1,15 @@
+.nav-header a {
+  transition: 0.3s ease-in-out;
+  text-decoration: none;
+}
+
+.nav-header a:hover {
+  color: #DDDBF1;
+  transition: 0.2s ease-in-out;
+  text-decoration: none;
+}
+
+.selected {
+  color: #DDDBF1;
+  transition: 0.5s ease-in-out;
+}
