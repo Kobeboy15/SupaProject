@@ -5,8 +5,13 @@
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
-  background: #383F51;
-  color: #191C24;
+  background: #171723;
+  color: #A6A9D1;
+  /* overflow: hidden; */
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 code {

@@ -21,22 +21,38 @@ const SOFT_DELETED_LIST = gql`
 `
 
 const ADD_ITEM = gql`
-  mutation addItem(
+mutation addItem(
+  $title: String!, 
+  $dueDate: date, 
+  $completedDate: date
+) {
+  insert_todos_one(
+    object: {
+      title: $title, 
+      dueDate: $dueDate, 
+      completedDate: $completedDate
+    })
+  {
+    id
+    title
+  }
+}
+`
+
+const UPDATE_ITEM = gql`
+  mutation updateItem(
     $id: Int!, 
-    $title: String!, 
-    $dueDate: date, 
-    $completedDate: date
+    $title: String, 
+    $dueDate: date
   ) {
-    insert_todos_one(
-      object: {
-        id: $id, 
+    update_todos_by_pk(
+      pk_columns: {id: $id}, 
+      _set: {
         title: $title, 
-        dueDate: $dueDate, 
-        completedDate: $completedDate
-      })
+        dueDate: $dueDate
+      }) 
     {
       id
-      title
     }
   }
 `
@@ -63,4 +79,11 @@ const DELETE_ITEM = gql`
   }
 `
 
-export { TODO_LIST, SOFT_DELETED_LIST, ADD_ITEM, SOFT_DELETE_ITEM, DELETE_ITEM };
+export { 
+  TODO_LIST, 
+  SOFT_DELETED_LIST, 
+  ADD_ITEM, 
+  UPDATE_ITEM, 
+  SOFT_DELETE_ITEM, 
+  DELETE_ITEM 
+};

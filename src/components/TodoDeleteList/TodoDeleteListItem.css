@@ -1,7 +1,11 @@
 .listitem-container {
-  background: #DDDBF1;
+  background: #24273D;
 }
 
-.material-icons {
-  color: #191C24;
+.listitem-container:first-child {
+  border-radius: 10px 10px 0 0;
+}
+
+.listitem-container .material-icons {
+  color: #A6A9D1;
 }

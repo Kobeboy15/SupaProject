@@ -1,7 +1,26 @@
 .listitem-container {
-  background: #DDDBF1;
+  background: #24273D;
 }
 
-.material-icons {
-  color: #191C24;
+.listitem-container:not(:last-child) {
+  border-bottom: 1px solid rgba(166,169,209,0.15);
+} 
+
+.listitem-container:hover .material-icons {
+  opacity: 1;
+  transition: 0.3s ease-in-out;
+}
+
+.listitem-container:first-child {
+  border-radius: 10px 10px 0 0;
+}
+
+.listitem-container:last-child {
+  border-radius: 0 0 10px 10px;
+}
+
+.listitem-container .material-icons {
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+  color: #A6A9D1;
 }

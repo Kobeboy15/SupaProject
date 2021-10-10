@@ -1,0 +1,16 @@
+.list-container {
+  /* max-height: 400px; */
+  position: relative;
+  background: #24273D;
+  border-radius: 10px;
+}
+
+.list-container .scroll-container {
+  /* height: 100%;
+  overflow-y: scroll; */
+  border-radius: 0 0 10px 10px;
+}
+
+.list-container .scroll-container::-webkit-scrollbar {
+  display: none;
+}

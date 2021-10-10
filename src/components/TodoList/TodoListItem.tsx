@@ -24,13 +24,16 @@ function TodoListItem({todo} :  TodoListItemProps) {
   }
 
   return (
-    <div className="listitem-container flex items-center my-2 p-4 rounded filter drop-shadow">
-      <div className="container-info flex-1">
-        <p>{ todo.title }</p>
-        { todo.dueDate!= null && <small className="italic">Due on: { todo.dueDate }</small>}
+    <div className="listitem-container flex items-center px-7 py-4">
+      <div className="container-info flex flex-1 items-center">
+        <input type="radio" className="checkbox-round" />
+        <div className="info-wrapper ml-6">
+          <p>{ todo.title }</p>
+          { todo.dueDate!= null && <small className="italic">Due on: { todo.dueDate }</small>}
+        </div>
       </div>
-      {/* <span className="material-icons">check</span> */}
-      <span className="material-icons" onClick={handleDelete}>delete</span>
+      <span className="material-icons cursor-pointer">edit</span>
+      <span className="material-icons cursor-pointer ml-6" onClick={handleDelete}>delete</span>
     </div>
   );
 }

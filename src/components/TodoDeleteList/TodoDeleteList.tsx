@@ -2,6 +2,7 @@ import { useQuery } from '@apollo/client';
 import TodoListItem from './TodoDeleteListItem';
 import { SOFT_DELETED_LIST } from '../../repositories/TodoListData';
 import Loading from '../LoadingSpinner/Loading';
+import TodoListFooter from '../TodoListFooter/TodoListFooter';
 
 export type Todo = {
   id: number;
@@ -18,9 +19,10 @@ function TodoDeleteList() {
   if(loading) return <Loading />;
   if(error) return <p>Error</p>;
   return (
-    <>
+    <div className="list-container">
+      <TodoListFooter />
       { data?.todos.map((item) => <TodoListItem todo={item} key={item.id}/>) }
-    </> 
+    </div> 
   );
 }
 

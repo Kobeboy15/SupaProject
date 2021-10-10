@@ -1,0 +1,30 @@
+.todo-input, .todo-input input {
+  background: #24273D;
+}
+
+.todo-input input:focus {
+  outline: none;
+}
+
+.todo-input input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  border-radius: 4px;
+  margin-left: -15px;
+  opacity: 0.6;
+  transition: 0.2s ease-in-out;
+  filter: invert(0.8);
+}
+
+.todo-input input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+  transition: 0.2s ease-in-out;
+}
+
+.submit-button {
+  transition: 0.2s ease-in-out;
+}
+
+.submit-button:hover {
+  opacity: 0.5;
+  transition: 0.2s ease-in-out;
+}

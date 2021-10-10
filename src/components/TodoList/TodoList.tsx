@@ -2,6 +2,9 @@ import { useQuery } from '@apollo/client';
 import TodoListItem from './TodoListItem';
 import { TODO_LIST } from '../../repositories/TodoListData';
 import Loading from '../LoadingSpinner/Loading';
+import TodoListFooter from '../TodoListFooter/TodoListFooter';
+
+import './TodoList.css';
 
 export type Todo = {
   id: number;
@@ -18,9 +21,12 @@ function TodoList() {
   if(loading) return <Loading />;
   if(error) return <p>Error</p>;
   return (
-    <>
-      { data?.todos.map((item) => <TodoListItem todo={item} key={item.id}/>) }
-    </> 
+    <div className="list-container">
+      <TodoListFooter />
+      <div className="scroll-container">
+        { data?.todos.map((item) => <TodoListItem todo={item} key={item.id}/>) }
+      </div>
+    </div> 
   );
 }
 

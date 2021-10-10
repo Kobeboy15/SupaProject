@@ -1,11 +1,12 @@
-import { NavLink } from "react-router-dom";
+import background from "../../assets/images/banner.jpg";
 import './TodoHeader.css';
 
 function TodoHeader() {
   return (
-    <div className="nav-header flex justify-around py-8">
-      <NavLink to="/" exact activeClassName="selected">Tasks</NavLink>
-      <NavLink to="/trash" activeClassName="selected">Trash</NavLink>
+    <div className="header-container" style={{ backgroundImage: `url(${background})` }}>
+      <div className="max-w-xl m-auto">
+        {/* <h2>TO DO</h2> */}
+      </div>
     </div>
   );
 }

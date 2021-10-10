@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import TodoListPage from './pages/TodoListPage';
+import TodoCompletePage from './pages/TodoCompletePage';
 import TodoTrashPage from './pages/TodoTrashPage';
 
 function App() {
@@ -16,6 +17,9 @@ function App() {
       <Switch>
         <Route exact path="/">
           <TodoListPage />
+        </Route>
+        <Route exact path="/complete">
+          <TodoCompletePage />
         </Route>
         <Route exact path="/trash">
           <TodoTrashPage />
