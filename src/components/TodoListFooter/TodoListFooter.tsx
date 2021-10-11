@@ -9,9 +9,6 @@ function TodoListFooter() {
         <NavLink to="/complete" exact activeClassName="selected" className="pr-5">Completed</NavLink>
         <NavLink to="/trash" activeClassName="selected" className="pr-5">Deleted</NavLink>
       </div>
-      {/* <div className="list-counter">
-        <small>4 items left</small>
-      </div> */}
     </div>
   );
 }

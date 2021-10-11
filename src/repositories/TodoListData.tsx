@@ -10,6 +10,17 @@ const TODO_LIST = gql`
   }
 `
 
+const COMPLETED_LIST = gql`
+query MyQuery {
+  todos(where: {completedDate: {_is_null: false}}) {
+    id
+    title
+    dueDate
+    completedDate
+  }
+}
+`
+
 const SOFT_DELETED_LIST = gql`
   query MyQuery {
     todos(where: {softDeleted: {_eq: true}}) {
@@ -57,6 +68,20 @@ const UPDATE_ITEM = gql`
   }
 `
 
+const SET_COMPLETE = gql`
+  mutation completeItem(
+    $id: Int!
+    $completedDate: date!
+  ) {
+    update_todos_by_pk(
+      _set: {completedDate: $completedDate}, 
+      pk_columns: {id: $id}) 
+    {
+      id
+    }
+  }
+`
+
 const SOFT_DELETE_ITEM = gql`
   mutation updateItem($id: Int!) {
     update_todos_by_pk(
@@ -81,9 +106,11 @@ const DELETE_ITEM = gql`
 
 export { 
   TODO_LIST, 
+  COMPLETED_LIST,
   SOFT_DELETED_LIST, 
   ADD_ITEM, 
   UPDATE_ITEM, 
+  SET_COMPLETE,
   SOFT_DELETE_ITEM, 
   DELETE_ITEM 
 };

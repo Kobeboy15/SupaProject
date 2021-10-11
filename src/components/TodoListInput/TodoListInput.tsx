@@ -33,17 +33,19 @@ function TodoListInput(props: any) {
   
   return (
     <div className="todo-input rounded-md p-4 mt-4 mb-8 w-full filter drop-shadow-md flex items-center">
-      <input 
-        type="text"
-        className="flex-1 pr-2" 
-        placeholder="Add new task"
-        onChange={onChange}
-      />
-      <input 
-        type="date"
-        className="date-picker"
-        onChange={onChangeDate}
-      />
+      <div className="input-container w-full tablet:flex">
+        <input 
+          type="text"
+          className="flex-1 pr-2 w-full" 
+          placeholder="Add new task"
+          onChange={onChange}
+        />
+        <input 
+          type="date"
+          className="date-picker tablet:border-gray-100"
+          onChange={onChangeDate}
+        />
+      </div>
       <span 
         className="submit-button material-icons text-white cursor-pointer ml-6"
         onClick={handleSubmit}
