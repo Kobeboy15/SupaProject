@@ -30,23 +30,12 @@
   transition: 0.3s ease-in-out;
 }
 
-/* .listitem-container:first-child {
-  border-radius: 10px 10px 0 0;
-} */
-
-.complete-todo {
-  width: 18px;
-  height: 18px;
-  background: #171723;
+.complete-todo span {
   transition: 0.2s ease-in-out;
 }
 
-.complete-todo span {
-  transform: scale(0.95);
-}
-
-.complete-todo:hover {
-  background: #4078ED;
+.complete-todo span:hover {
+  color: green;
   transition: 0.2s ease-in-out;
 }
 
@@ -54,8 +43,14 @@
   border-radius: 0 0 10px 10px;
 }
 
-.listitem-container .material-icons {
+.listitem-container .item-actions,
+.complete-todo span {
   opacity: 0;
   transition: 0.2s ease-in-out;
   color: #A6A9D1;
+}
+
+.listitem-container .item-actions:hover {
+  color: #fff;
+  transition: 0.2s ease-in-out;
 }

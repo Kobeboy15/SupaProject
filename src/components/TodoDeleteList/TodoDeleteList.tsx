@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from '@apollo/client';
 import TodoListItem from './TodoDeleteListItem';
-import { DELETE_ITEM, SOFT_DELETED_LIST } from '../../repositories/TodoListData';
+import { DELETE_ITEM, SOFT_DELETED_LIST, RESTORE_ITEM } from '../../repositories/TodoListData';
 import Loading from '../LoadingSpinner/Loading';
 import TodoListFooter from '../TodoListFooter/TodoListFooter';
 import { useEffect, useState } from 'react';
@@ -28,17 +28,33 @@ function TodoDeleteList() {
     }
   });
 
+  const [restoreItem, { loading: restoreLoading }] = useMutation(RESTORE_ITEM, {
+    update(_, result){
+      if(!restoreLoading) console.log(result);
+    },
+    onError(err){
+      console.log(err);
+    }
+  });
+
   function handleDelete(id: number) {
     deleteItem({variables: { id: id }});
     setTodoItem(todoItems.filter(item => item.id !== id));
     refetch();
   }
 
+  function handleRestore(id: number) {
+    restoreItem({variables: { id: id }});
+    setTodoItem(todoItems.filter(item => item.id !== id));
+    refetch();
+  }
+
   useEffect(() => {
     if(data){
+      refetch();
       setTodoItem(data.todos);
     }
-  },[data])
+  },[data, refetch])
   
   if(error) return <p>Error</p>;
   return (
@@ -52,6 +68,7 @@ function TodoDeleteList() {
                 todo={item} 
                 key={item.id}
                 handleDelete={handleDelete}
+                handleRestore={handleRestore}
               />
             ) 
           }

@@ -32,8 +32,8 @@ function TodoListInput(props: any) {
   }
   
   return (
-    <div className="todo-input rounded-md p-4 mt-4 mb-8 w-full filter drop-shadow-md flex items-center">
-      <div className="input-container w-full tablet:flex">
+    <div className="todo-input rounded-md p-4 mt-4 mb-4 w-full filter drop-shadow-md flex items-center">
+      <div className="input-container w-full flex">
         <input 
           type="text"
           className="flex-1 pr-2 w-full" 
@@ -42,7 +42,7 @@ function TodoListInput(props: any) {
         />
         <input 
           type="date"
-          className="date-picker tablet:border-gray-100"
+          className="date-picker sm:border-gray-100"
           onChange={onChangeDate}
         />
       </div>

@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 const TODO_LIST = gql`
   query MyQuery {
-    todos(where: {softDeleted: {_eq: false}}) {
+    todos(where: {softDeleted: {_eq: false}, completedDate: {_is_null: true}}) {
       id
       title
       dueDate
@@ -82,6 +82,18 @@ const SET_COMPLETE = gql`
   }
 `
 
+const RESTORE_ITEM = gql`
+  mutation updateItem($id: Int!) {
+    update_todos_by_pk(
+      pk_columns: {id: $id}, 
+      _set: {softDeleted: false}
+    ) {
+      id
+      softDeleted
+    }
+  }
+`
+
 const SOFT_DELETE_ITEM = gql`
   mutation updateItem($id: Int!) {
     update_todos_by_pk(
@@ -111,6 +123,7 @@ export {
   ADD_ITEM, 
   UPDATE_ITEM, 
   SET_COMPLETE,
+  RESTORE_ITEM,
   SOFT_DELETE_ITEM, 
   DELETE_ITEM 
 };

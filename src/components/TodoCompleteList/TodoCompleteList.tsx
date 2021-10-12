@@ -37,9 +37,10 @@ function TodoCompleteList() {
 
   useEffect(() => {
     if(data){
+      refetch();
       setTodoItem(data.todos);
     }
-  },[data])
+  },[data, refetch])
   
   if(error) return <p>Error</p>;
   return (

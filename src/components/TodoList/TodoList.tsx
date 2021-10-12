@@ -32,7 +32,7 @@ function TodoList() {
   
   const [completeItem, { loading: completeLoading }] = useMutation(SET_COMPLETE, {
     update(_, result){
-      if(!completeLoading) console.log(result);
+      if(!completeLoading) console.log("COMPLETE",result);
     },
     onError(err){
       console.log(err);
@@ -54,9 +54,10 @@ function TodoList() {
 
   useEffect(() => {
     if(data){
+      refetch();
       setTodoItem(data.todos);
     }
-  },[data])
+  },[data, refetch])
 
   if(error) return <p>Error</p>;
   return (
