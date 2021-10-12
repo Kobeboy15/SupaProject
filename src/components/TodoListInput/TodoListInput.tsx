@@ -33,11 +33,11 @@ function TodoListInput(props: any) {
   
   return (
     <div className="todo-input rounded-md p-4 mt-4 mb-4 w-full filter drop-shadow-md flex items-center">
-      <div className="input-container w-full flex">
+      <div className="input-container w-full tablet:flex">
         <input 
           type="text"
           className="flex-1 pr-2 w-full" 
-          placeholder="Add new task"
+          placeholder="Add a new task"
           onChange={onChange}
         />
         <input 

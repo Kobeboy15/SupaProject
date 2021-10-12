@@ -60,7 +60,7 @@ function TodoCompleteList() {
         </div>
       ) : 
         <div className="empty-container p-7 text-center">
-          <small>No Completed tasks!</small>
+          <small className="opacity-50">No Completed tasks!</small>
         </div> 
       }
       

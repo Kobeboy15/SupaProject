@@ -75,7 +75,7 @@ function TodoDeleteList() {
         </div>
       ) : 
         <div className="empty-container p-7 text-center">
-          <small>Trash is Empty.</small>
+          <small className="opacity-50">Trash is Empty.</small>
         </div> 
       }
       

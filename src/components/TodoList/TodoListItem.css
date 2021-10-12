@@ -54,3 +54,27 @@
   color: #fff;
   transition: 0.2s ease-in-out;
 }
+
+.edit-text:focus {
+  outline: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.edit-date {
+  font-size: 12px;
+}
+
+.edit-date::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  border-radius: 4px;
+  margin-left: -15px;
+  opacity: 0.6;
+  transition: 0.2s ease-in-out;
+  filter: invert(0.8);
+}
+
+.edit-date::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+  transition: 0.2s ease-in-out;
+}

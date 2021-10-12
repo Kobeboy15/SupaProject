@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from '@apollo/client';
 import TodoListItem from './TodoListItem';
-import { SET_COMPLETE, SOFT_DELETE_ITEM, TODO_LIST } from '../../repositories/TodoListData';
+import { SET_COMPLETE, SOFT_DELETE_ITEM, TODO_LIST, UPDATE_ITEM } from '../../repositories/TodoListData';
 import Loading from '../LoadingSpinner/Loading';
 import TodoListFooter from '../TodoListFooter/TodoListFooter';
 
@@ -21,6 +21,15 @@ function TodoList() {
   const [todoItems, setTodoItem] = useState<Todo[]>([]);
   const { loading, error, data, refetch } = useQuery<TodoData, Todo>(TODO_LIST);
 
+  const [updateItem, { loading: updateLoading }] = useMutation(UPDATE_ITEM, {
+    update(_, result){
+      if(!updateLoading) console.log(result);
+    },
+    onError(err){
+      console.log(err);
+    }
+  });
+  
   const [deleteItem, { loading: deleteLoading }] = useMutation(SOFT_DELETE_ITEM, {
     update(_, result){
       if(!deleteLoading) console.log(result);
@@ -38,6 +47,18 @@ function TodoList() {
       console.log(err);
     }
   });
+
+  function handleUpdate(id: number, title: string, dueDate: string) {
+    updateItem({variables: { id: id, title: title, dueDate: dueDate }});
+    // var tempArray = todoItems;
+    // tempArray.forEach(item => {
+    //   if(item.id === id){
+    //     item.title = title;
+    //     item.dueDate = dueDate;
+    //   }
+    // })
+    // setTodoItem(tempArray);
+  }
 
   function handleComplete(id: number) {
     const formattedDate = new Date()
@@ -72,12 +93,13 @@ function TodoList() {
               key={item.id}
               handleComplete={handleComplete} 
               handleDelete={handleDelete}
+              handleUpdate={handleUpdate}
             />
           ) }
         </div>
       ) : 
         <div className="empty-container p-7 text-center">
-          <small>No tasks!</small>
+          <small className="opacity-50">No tasks!</small>
         </div> 
       }
       
