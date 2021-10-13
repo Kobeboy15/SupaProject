@@ -8,7 +8,7 @@ function App() {
     <Router>
       <TodoHeader />
       <TodoListPage />
-      <div className="text-center opacity-20 absolute w-full bottom-0 p-3">
+      <div className="text-center opacity-20 fixed w-full bottom-0 p-3 z-0">
         <small>Made by Kobe Michael ©2021</small>
       </div>
     </Router>

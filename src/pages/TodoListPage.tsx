@@ -6,7 +6,7 @@ import { Switch, Route } from "react-router-dom";
 
 function TodoListPage() {
   return (
-    <div className="px-4 max-w-xl m-auto relative -top-40">
+    <div className="px-4 max-w-xl m-auto relative -top-40 z-10">
       <div className="relative w-full">
         <Switch>
           <Route exact path="/">
