@@ -2,7 +2,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import TodoListItem from './TodoListItem';
 import { SET_COMPLETE, SOFT_DELETE_ITEM, TODO_LIST, UPDATE_ITEM } from '../../repositories/TodoListData';
 import Loading from '../LoadingSpinner/Loading';
-import TodoListFooter from '../TodoListFooter/TodoListFooter';
+import TodoListNavbar from '../TodoListNavbar/TodoListNavbar';
 
 import './TodoList.css';
 import { useEffect, useState } from 'react';
@@ -23,7 +23,16 @@ function TodoList() {
 
   const [updateItem, { loading: updateLoading }] = useMutation(UPDATE_ITEM, {
     update(_, result){
-      if(!updateLoading) console.log(result);
+      if(!updateLoading) {
+        let newArr = [...todoItems];
+        let temp = newArr.map(item => {
+          if(item.id === result.data.id){
+            return {...item, id: result.data.id, title: result.data.title, dueDate: result.data.dueDate};
+          }
+          return item;
+        })
+        setTodoItem(temp);
+      }
     },
     onError(err){
       console.log(err);
@@ -32,7 +41,10 @@ function TodoList() {
   
   const [deleteItem, { loading: deleteLoading }] = useMutation(SOFT_DELETE_ITEM, {
     update(_, result){
-      if(!deleteLoading) console.log(result);
+      if(!deleteLoading) {
+        setTodoItem(todoItems.filter(item => item.id !== result.data.id));
+        refetch();
+      }
     },
     onError(err){
       console.log(err);
@@ -41,7 +53,10 @@ function TodoList() {
   
   const [completeItem, { loading: completeLoading }] = useMutation(SET_COMPLETE, {
     update(_, result){
-      if(!completeLoading) console.log("COMPLETE",result);
+      if(!completeLoading) {
+        setTodoItem(todoItems.filter(item => item.id !== result.data.id));
+        refetch();
+      }
     },
     onError(err){
       console.log(err);
@@ -49,28 +64,20 @@ function TodoList() {
   });
 
   function handleUpdate(id: number, title: string, dueDate: string) {
-    updateItem({variables: { id: id, title: title, dueDate: dueDate }});
-    let newArr = [...todoItems];
-    let temp = newArr.map(item => {
-      if(item.id === id){
-        return {...item, id: id, title: title, dueDate: dueDate};
-      }
-      return item;
-    })
-    setTodoItem(temp);
+    if(dueDate) {
+      updateItem({variables: { id: id, title: title, dueDate: dueDate }});
+    } else {
+      updateItem({variables: { id: id, title: title }})
+    }
   }
 
   function handleComplete(id: number) {
     const formattedDate = new Date()
     completeItem({variables: { id: id, completedDate: formattedDate.toISOString().split('T')[0] }})
-    setTodoItem(todoItems.filter(item => item.id !== id));
-    refetch();
   }
 
   function handleDelete(id: number) {
     deleteItem({variables: { id:id }});
-    setTodoItem(todoItems.filter(item => item.id !== id));
-    refetch();
   }
 
   useEffect(() => {
@@ -83,7 +90,7 @@ function TodoList() {
   if(error) return <p>Error</p>;
   return (
     <div className="list-container">
-      <TodoListFooter />
+      <TodoListNavbar />
       { loading ? <Loading /> : todoItems.length > 0 ? 
       (
         <div className="scroll-container">

@@ -2,7 +2,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import TodoListItem from './TodoDeleteListItem';
 import { DELETE_ITEM, SOFT_DELETED_LIST, RESTORE_ITEM } from '../../repositories/TodoListData';
 import Loading from '../LoadingSpinner/Loading';
-import TodoListFooter from '../TodoListFooter/TodoListFooter';
+import TodoListNavbar from '../TodoListNavbar/TodoListNavbar';
 import { useEffect, useState } from 'react';
 
 export type Todo = {
@@ -21,7 +21,10 @@ function TodoDeleteList() {
 
   const [deleteItem, { loading: deleteLoading }] = useMutation(DELETE_ITEM, {
     update(_, result){
-      if(!deleteLoading) console.log(result);
+      if(!deleteLoading) {
+        setTodoItem(todoItems.filter(item => item.id !== result.data.id));
+        refetch();
+      }
     },
     onError(err){
       console.log(err);
@@ -30,7 +33,10 @@ function TodoDeleteList() {
 
   const [restoreItem, { loading: restoreLoading }] = useMutation(RESTORE_ITEM, {
     update(_, result){
-      if(!restoreLoading) console.log(result);
+      if(!restoreLoading) {
+        setTodoItem(todoItems.filter(item => item.id !== result.data.id));
+        refetch();
+      }
     },
     onError(err){
       console.log(err);
@@ -39,14 +45,10 @@ function TodoDeleteList() {
 
   function handleDelete(id: number) {
     deleteItem({variables: { id: id }});
-    setTodoItem(todoItems.filter(item => item.id !== id));
-    refetch();
   }
 
   function handleRestore(id: number) {
     restoreItem({variables: { id: id }});
-    setTodoItem(todoItems.filter(item => item.id !== id));
-    refetch();
   }
 
   useEffect(() => {
@@ -59,7 +61,7 @@ function TodoDeleteList() {
   if(error) return <p>Error</p>;
   return (
     <div className="list-container">
-      <TodoListFooter />
+      <TodoListNavbar />
       { loading ? <Loading /> : todoItems.length > 0 ? 
       (
         <div className="scroll-container">

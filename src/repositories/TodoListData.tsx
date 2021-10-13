@@ -64,6 +64,8 @@ const UPDATE_ITEM = gql`
       }) 
     {
       id
+      title
+      dueDate
     }
   }
 `

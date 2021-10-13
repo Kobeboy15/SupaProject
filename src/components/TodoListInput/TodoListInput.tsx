@@ -12,8 +12,9 @@ function TodoListInput(props: any) {
 
   const [addItem, { loading }] = useMutation(ADD_ITEM, {
     update(_, result){
-      if(!loading) console.log(result);
-      window.location.reload();
+      if(!loading) {
+        window.location.reload();
+      }
     },
     onError(err){
       console.log(err);
