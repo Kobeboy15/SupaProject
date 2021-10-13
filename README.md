@@ -26,6 +26,8 @@ SupaProject uses [Node.js](https://nodejs.org/) v14.15.3 to run.
 
 Install the dependencies and devDependencies and start the server.
 
+*The .env file provided, should be inside the project's root folder*
+
 ```sh
 cd supa-project
 npm install
