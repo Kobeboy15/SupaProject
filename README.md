@@ -16,7 +16,7 @@ Tasked with the building of a small prototype todo list manager, using React, wi
 - Use Tailwind CSS to style the app.
 - Make the web app fully responsive across multiple breakpoints.
 - Use Typescript.
-X Allow the user to set a priority or set a custom order for their todos.
+- Allow the user to set a priority or set a custom order for their todos. (Wasn't able to implement)
 - 'Soft delete' tasks, allowing the user to navigate to a 'Recently deleted' page and restore them.
 
 
