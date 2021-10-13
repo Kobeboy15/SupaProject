@@ -1,5 +1,4 @@
 import { Todo } from "./TodoDeleteList";
-import './TodoDeleteListItem.css';
 
 type TodoListItemProps = { 
   todo: Todo 

@@ -11,9 +11,9 @@ function TodoDeleteListItem({todo, handleDelete} :  TodoListItemProps) {
     <div className="listitem-container flex items-center px-5 py-4">
       <div className="container-info flex-1 ml-5">
         <p>{ todo.title }</p>
-        { todo.dueDate!= null && <small className="italic">Completed on: { todo.completedDate }</small>}
+        <small className="italic">Completed on: { todo.completedDate }</small>
       </div>
-      <span className="material-icons cursor-pointer" onClick={() => handleDelete(todo.id)}>delete</span>
+      <span className="material-icons item-actions cursor-pointer" onClick={() => handleDelete(todo.id)}>delete</span>
     </div>
   );
 }

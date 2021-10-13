@@ -11,6 +11,7 @@ export type Todo = {
   id: number;
   title: string;
   dueDate: string;
+  completedDate: string;
 }
 
 type TodoData = {
