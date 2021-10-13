@@ -8,6 +8,9 @@ function App() {
     <Router>
       <TodoHeader />
       <TodoListPage />
+      <div className="text-center opacity-20 absolute w-full bottom-0 p-3">
+        <small>Made by Kobe Michael ©2021</small>
+      </div>
     </Router>
   );
 }

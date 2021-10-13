@@ -31,6 +31,11 @@ function TodoListInput(props: any) {
       addItem({variables: { title: values.title }});
     }
   }
+
+  function getDate() {
+    const todayDate = new Date().toISOString().split('T')[0];
+    return todayDate;
+  }
   
   return (
     <div className="todo-input rounded-md p-4 mt-4 mb-4 w-full filter drop-shadow-md flex items-center">
@@ -44,6 +49,7 @@ function TodoListInput(props: any) {
         <input 
           type="date"
           className="date-picker sm:border-gray-100"
+          defaultValue={getDate()}
           onChange={onChangeDate}
         />
       </div>
