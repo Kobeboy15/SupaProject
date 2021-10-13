@@ -1,4 +1,3 @@
-import './App.css';
 import TodoHeader from './components/TodoHeader/TodoHeader';
 import TodoListPage from './pages/TodoListPage';
 

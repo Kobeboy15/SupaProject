@@ -64,7 +64,7 @@ function InfoListItem({ isEdit, todo, handleComplete, handleDelete, setIsEdit }:
         </button>
         <div className="info-wrapper flex-1 ml-4">
           <p>{ todo.title }</p>
-          { todo.dueDate!= null && <small className="italic">Due on: { todo.dueDate }</small>}
+          { todo.dueDate !== (null || "") && <small className="italic">Due on: { todo.dueDate }</small>}
         </div>
       </div>
       <span className="material-icons item-actions cursor-pointer" onClick={() => setIsEdit(!isEdit)}>edit</span>

@@ -50,14 +50,14 @@ function TodoList() {
 
   function handleUpdate(id: number, title: string, dueDate: string) {
     updateItem({variables: { id: id, title: title, dueDate: dueDate }});
-    // var tempArray = todoItems;
-    // tempArray.forEach(item => {
-    //   if(item.id === id){
-    //     item.title = title;
-    //     item.dueDate = dueDate;
-    //   }
-    // })
-    // setTodoItem(tempArray);
+    let newArr = [...todoItems];
+    let temp = newArr.map(item => {
+      if(item.id === id){
+        return {...item, id: id, title: title, dueDate: dueDate};
+      }
+      return item;
+    })
+    setTodoItem(temp);
   }
 
   function handleComplete(id: number) {

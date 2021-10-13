@@ -14,7 +14,7 @@ const authMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext(({ headers = {} }) => ({
     headers: {
       ...headers,
-      'x-hasura-admin-secret': 'imfeelingproductivetoday',
+      'x-hasura-admin-secret': process.env.REACT_APP_API_KEY,
     }
   }));
 
