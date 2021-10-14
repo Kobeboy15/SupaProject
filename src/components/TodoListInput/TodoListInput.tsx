@@ -7,7 +7,7 @@ function TodoListInput(props: any) {
 
   const [values, setValues] = useState({
     title: '',
-    dueDate: ''
+    dueDate: new Date().toISOString().split('T')[0],
   })
 
   const [addItem, { loading }] = useMutation(ADD_ITEM, {
@@ -25,10 +25,12 @@ function TodoListInput(props: any) {
   const onChangeDate: ChangeEventHandler<HTMLInputElement> = e => setValues({...values, dueDate: e.target.value})
   
   function handleSubmit() {
-    if(values.dueDate) {
-      addItem({variables: { title: values.title, dueDate: values.dueDate }});
-    } else {
-      addItem({variables: { title: values.title }});
+    if(values.title) {
+      if(values.dueDate) {
+        addItem({variables: { title: values.title, dueDate: values.dueDate }});
+      } else {
+        addItem({variables: { title: values.title }});
+      }
     }
   }
 
